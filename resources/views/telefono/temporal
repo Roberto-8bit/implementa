@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lista de telefonos  {{$infoCliente->id}} {{$infoCliente->nombreCliente}} {{$infoCliente->ApellidoCliente}} </h1>
+    <a href="/telefono/crear/{{$infoCliente->id}}">Crear Telefono</a>
+    <table>
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Codigo Cliente</td>
+                <td>Numero Telefono</td>
+                <td>Editar</td>
+                <td>Eliminar</td>
+            </tr>
+        </thead>
+    </table>
+
+    <tbody>
+        @foreach($dTelefonos as $telefono)
+        @if($telefono->codigoCliente==$infoCliente->id)
+        <tr>
+        <td>{{$telefono->id}}</td>
+        <td>{{$telefono->codigoCliente}}</td>
+        <td>{{$telefono->numero}}</td>
+
+        <td><a href="/telefono/{{$telefono->id}}/edit">Editar</a></td>
+        <td><a href="/telefono/{{$telefono->id}}">Eliminar</a></td>
+        @endif
+        
+        @endforeach
+    </tbody>
+</body>
+</html>
